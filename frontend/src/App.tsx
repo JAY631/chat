@@ -19,7 +19,7 @@ function App() {
 
   const setUsername = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!ws.current || !usernameText.trim()) return; // Проверка на пустое имя
+    if (!ws.current || !usernameText.trim()) return; 
     ws.current.send(
       JSON.stringify({
         type: "SET_USERNAME",
@@ -31,14 +31,14 @@ function App() {
 
   const sendMessage = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!ws.current || !messageText.trim()) return; // Проверка на пустое сообщение
+    if (!ws.current || !messageText.trim()) return; 
     ws.current.send(
       JSON.stringify({
         type: "SEND_MESSAGE",
         payload: messageText,
       })
     );
-    setMessageText(""); // Очистка поля сообщения после отправки
+    setMessageText(""); 
   };
 
   useEffect(() => {
@@ -50,7 +50,7 @@ function App() {
 
     ws.current.onclose = () => {
       console.log("WebSocket connection closed");
-      // Здесь можно реализовать логику повторного подключения, если нужно
+      
     };
 
     ws.current.onerror = (error) => {
